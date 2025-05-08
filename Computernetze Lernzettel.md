@@ -136,6 +136,10 @@
 - Der angesprochene Server schickt seine Antwort an die IP und Port des Routers
 - Der Router schaut in seiner Tabelle, welche Client IP und Port Kombination hinter dem Paket stecken, die er über den Port sendet
 - Der Router ersetzt die Adresse des Clients durch seine eigene im Paket und leitet sie weiter ins Lokale Netzwerk
+### Aus Sicht des Clients ist nicht erkennbar, dass sich der Router zwischengeschaltet hat.
+
+### 
+
 
 
 
