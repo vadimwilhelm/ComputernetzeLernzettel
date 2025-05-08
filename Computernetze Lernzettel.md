@@ -105,3 +105,17 @@
 ### Das FTP-Protokoll benutzt eine Authentifizierung, dabei wird das Passwort im Klartext übertragen.
 
 ### FTP verwendet wellKnown Ports. 21 für den Austausch von Befehlen und Port 20 für Datei Übertragung.
+
+## FTP Aktiv- und Passivmodus
+### Bei der Übertragung der Daten kann kann FTP mit *aktiven** oder **passiven** Modus betrieben werden.
+
+## Aktiv:
+- Der Client sendet über seinen einen Befehl an den Port 21 des Servers
+- Der Server bestätigt den Befehl mit einem Statuscode über Port 21 Client
+- Kurz danach sendet der Server Daten über Port 20 auf den Port des Clients
+- Der Client sendet dann die Bestätigung an den Server und bricht die Kontrollverbindung ab
+### Das Problem ist, dass der Server unaufgefordert Daten an den Client Sendet, dadurch können Probleme mit der NAT entstehen.
+
+
+
+---

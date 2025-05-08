@@ -22,22 +22,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "5e607f7247cf9b0f",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ac217e5878be52d8",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -181,7 +165,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ac217e5878be52d8",
+  "active": "7ca1c371ab48da87",
   "lastOpenFiles": [
     "Computernetze Lernzettel.md",
     "Welcome.md.md",
