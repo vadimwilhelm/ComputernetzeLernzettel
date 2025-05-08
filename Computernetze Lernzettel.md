@@ -96,7 +96,7 @@
 ### Probleme ergeben sich, wenn Cookies an Server weitergegeben werden, die gar nicht der Shop-URL entsprechen, weil dieser Server dann nachvollziehen kann, welchen Shop der Client besucht hat.
 ---
 
-## **FTP/NAT**
+## **FTP**
 ## FTP Protokoll:
 ### FTP ist ein Protokoll, was für die Datenübertragung  über ein Netzwerk von einem Computer zum anderen verwendet wird.
 
@@ -124,3 +124,19 @@
 -  Der Server schließt die Datenverbindung und der Client die Kontrollverbindung
 ### Alle Verbindungen werden vom Client initiiert, weil weil ausgehende Verbindungen normalerweise erlaubt sind, und es keine eingehenden Verbindungen gibt, die blockiert werden müssten.
 ---
+## **NAT**
+
+### IP-Adressen sind Mangelware, die Lösung ist innerhalb eines LANs private IP-Adressen zu verwenden, die dann hinter einem Router mit NAT verborgen liegen.
+### Dadurch muss der Provider nur eine internetfähige IP-Adresse vergeben, die für die dahinterliegenden Hosts ins Internet geht, indem sie ihre Anfragen durch den Router erledigen lassen.
+
+## _Umsetzung:_
+### Will der Client ins Internet, werden seine Pakete automatisch an einen NAT fähigen Router gesendet
+- der Router merkt sich in einer Tabelle die lokale IP-Adresse des Clients und dessen Port, sowie die IP-Adresse und den Port der Zieladresse
+- Der Router sendet das Paket unter seiner Internet-IP-Adresse und eigenem Port
+- Der angesprochene Server schickt seine Antwort an die IP und Port des Routers
+- Der Router schaut in seiner Tabelle, welche Client IP und Port Kombination hinter dem Paket stecken, die er über den Port sendet
+- Der Router ersetzt die Adresse des Clients durch seine eigene im Paket und leitet sie weiter ins Lokale Netzwerk
+
+
+
+
