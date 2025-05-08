@@ -37,7 +37,7 @@
 	- Durchtrennung eines Kabels führt zu einem Teilausfall des gesamten Netzwerks
 
 ## Ring
-### Um Kollisionen zu vermeiden kam die Idee des [Token Ring](https://willemer.de/informatik/net/nethard.htm#token) auf. Hier wird ein Token von Host zu Host gereicht. Das erspart Kollisionen. Solange sie sich nicht gegenseitig überholen, ist es problemlos möglich, mehrere Token im Kreis laufen zu lassen und damit den Durchsatz zu erhöhen.
+### Um Kollisionen zu vermeiden kam die Idee des Token Ring auf. Hier wird ein Token von Host zu Host gereicht. Das erspart Kollisionen. Solange sie sich nicht gegenseitig überholen, ist es problemlos möglich, mehrere Token im Kreis laufen zu lassen und damit den Durchsatz zu erhöhen.
 
 - Vorteile:
 	- Kollisionsfrei
@@ -107,15 +107,20 @@
 ### FTP verwendet wellKnown Ports. 21 für den Austausch von Befehlen und Port 20 für Datei Übertragung.
 
 ## FTP Aktiv- und Passivmodus
-### Bei der Übertragung der Daten kann kann FTP mit *aktiven** oder **passiven** Modus betrieben werden.
+### Bei der Übertragung der Daten kann kann FTP mit **aktiven** oder **passiven** Modus betrieben werden.
 
 ## Aktiv:
 - Der Client sendet über seinen einen Befehl an den Port 21 des Servers
 - Der Server bestätigt den Befehl mit einem Statuscode über Port 21 Client
 - Kurz danach sendet der Server Daten über Port 20 auf den Port des Clients
 - Der Client sendet dann die Bestätigung an den Server und bricht die Kontrollverbindung ab
-### Das Problem ist, dass der Server unaufgefordert Daten an den Client Sendet, dadurch können Probleme mit der NAT entstehen.
+### Das Problem ist, dass der Server unaufgefordert Daten an den Client Sendet, dadurch können Probleme mit der NAT entstehen. Sobald die NAT eine Datei bekommt, schaut diese in einer Tabelle nach, welche IP-Adresse den Auftrag gegeben hat und schickt das Ergebnis. Bei einer unaufgeforderten Datenübertragung, weiß die NAT nicht wer der Auftraggeber ist und verwirft das Paket.
 
-
-
+## Passiv:
+- Der Client sendet seinen Befehl an an den Port 21 des Servers
+- Der Server sagt dem Client das er die Pakete über einen zufälligen Port wie 1234 sendet
+- Der Client öffnet eine Verbindung zum Port 1234
+- Der Server sendet daten über einen eigenen Port die Pakete an Port 1234 des Clients
+-  Der Server schließt die Datenverbindung und der Client die Kontrollverbindung
+### Alle Verbindungen werden vom Client initiiert, weil weil ausgehende Verbindungen normalerweise erlaubt sind, und es keine eingehenden Verbindungen gibt, die blockiert werden müssten.
 ---
