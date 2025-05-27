@@ -139,8 +139,6 @@
 ### Aus Sicht des Clients ist nicht erkennbar, dass sich der Router zwischengeschaltet hat.
 
 ### Eine NAT ist eine sehr wirksame Schranke gegen Attacken aus dem Internet.
-
-### Eine NAT ist eine sehr wirksame Schranke gegen Attacken aus dem Internet.
 ---
 # Mail
 
