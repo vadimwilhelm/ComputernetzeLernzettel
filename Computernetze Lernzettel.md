@@ -198,6 +198,28 @@
 
 ## Kanonischer Name:
 ### Ein kanonischer Name  bezeichnet den eindeutigen, primären Namen der zu einer IP-Adresse gehört. Dieser wird vom DNS zurückgegeben, wenn die IP-Adresse zum Namen aufgelöst wird.
+---
+## Rekursiv:
+
+### Bei einer rekursiven Namensauflösung werden Anfragen, die ein lokaler DNS-Server nicht beantworten kann an dessen übergeordneten Server weitergeleitet, bis der oberste gemeinsame Server gefunden ist. Von dort werden nun für die jeweilige Domain verantwortlichen Server aufgesucht, bis die IP-Adresse gefunden ist. Diese wird dann auf dem umgekehrten Weg zurückgereicht.
+
+## Iterativ:
+### Beim iterativen Ansatz leitet der angefragte DNS-Server die Anfrage nicht weiter, sondern informiert den Anfrager, welcher DNS-Server für die weitere Auflösung des Namens zuständig ist. Der Anfrager muss also mehrere Anfragen stellen, bis die IP-Adresse gefunden ist.
+
+
+### Der Client kann den DNS auffordern, rekursiv oder iterativ vorzugehen. Iterativ entlastet die TLD-Server
+---
+# RR
+### Ein RR wird als Antwort auf eine DNS-Anfrage vom Server an den Client gesandt. In dem RR befinden sich die Informationen des DNS für den Client.
+### Wenn der Client eine DNS-Anfrage stellt (z. B. nach der IP-Adresse einer Website), dann enthält der RR in der DNS-Antwort die IP-Adresse und der Client weiß danach, wohin (an welche IP) er die eigentliche Anfrage schicken muss.
+---
+## Sicherheit
+
+### DNS ist unverschlüsselt
+### DNSSEC verwendet Zertifikate, damit die Autorisierung des Servers geprüft werden kann
+
+### Eine Anmeldung mit Benutzer und Passwort ist bei DNS nicht möglich.
+---
 
 
 
