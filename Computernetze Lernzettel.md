@@ -138,7 +138,68 @@
 - Der Router ersetzt die Adresse des Clients durch seine eigene im Paket und leitet sie weiter ins Lokale Netzwerk
 ### Aus Sicht des Clients ist nicht erkennbar, dass sich der Router zwischengeschaltet hat.
 
-### 
+### Eine NAT ist eine sehr wirksame Schranke gegen Attacken aus dem Internet.
+
+### Eine NAT ist eine sehr wirksame Schranke gegen Attacken aus dem Internet.
+---
+# Mail
+
+## SMPT:
+### Beschreibt das Senden der Mails an einen Mail-Server, der ständig zur Verfügung steht. Dieser kann die Mails entweder an einen anderen Mail-Server weitersenden oder, falls er der Zielserver ist, die Mails an seine User verteilen.
+
+### Im Ursprung sendet das Protokoll alle seine Nachrichten im Klartext und  und es war keine Authentifizierung vorhergesehen. Heutzutage werden die Übertragung verschlüsselt aber nicht die Nachricht selber, die bleibt im Postfach Unverschlüsselt.
+
+### Aus Sicherheitsgründen erlaubt SMPT das Versenden an Nachrichten nur, wenn Sender oder Empfänger der Domain des Servers angehören.
+
+### SMPT ist nicht statuslos, obwohl es ohne Anmeldung funktioniert. Das Protokoll ist textbasiert, als Daten werden nur druckbare Zeichen verwendet, somit können keine binären Daten übertragen werden.
+---
+# SMPT Absender:
+## Mail From:
+### muss eine korrekte E-Mail-Adresse enthalten und wird geprüft.
+
+## From:
+### muss keine korrekte E-Mail-Adresse enthalten. Er wird aber dem Empfänger angezeigt.
+---
+# SMPT Mail Inhalt
+### SMTP definiert das Ende einer Mail-Nachricht mit einem Punkt in einer Leerzeile.
+
+### Deutsche Umlaute im Nachrichtentext können nicht direkt übertragen werden, sondern müssen umkodiert werden.
+---
+# Client Befehle
+- HELO: startet Verbindung
+- EHLO: startet die Verbindung nach dem Extended SMTP
+- DATA: Damit wird die eigentliche Nachricht eingeleitet
+- QUIT: Ende der Verbindung
+- VRFY: lasse die E-Mail-Adresse bestätigen
+
+# Server Antwort
+- 1xx: Die Anforderung ist akzeptiert, aber noch nicht verarbeitet. Bestätigung erforderlich
+- 2xx: Die Anforderung wurde erfolgreich ausgeführt
+- 3xx: Die Anforderung ist verstanden, benötigt aber weitere Informationen
+- 4xx: Temporärer Fehler und könnte bei Wiederholung glücken
+- 5xx: Fataler Fehler
+---
+# POP3
+### POP3 ist für das herunterladen von Mails vom Server auf einen lokalen Client. Standardmäßig werden die E-Mails **vom Server gelöscht**, sobald sie heruntergeladen wurden. POP3 ist optimiert auf möglichst kurze Onlineverbindungen, weil nach Verbindungsdauer bezahlt wird. POP3 erzwingt eine Anmeldung mit Benutzer und Passwort.
+---
+# IMAP
+
+### IMAP ist das Protokoll für die Verwaltung von E-Mails auf einem Mailserver. DAs Protokoll erzwingt eine Anmeldung  und kann Nachrichten auf den Server löschen. Da Benutzer mehrere Geräte haben, ist IMAP darauf optimiert, dass mehrere Clients die Mails bearbeiten können. 
+---
+# MIME
+### Beim versenden von JPG-Fotos bzw. Binären Daten muss MIME verwendet werden. Dabei werden die Bilder in Base64 kodiert, dadurch werden die um ein drittel größer.
+---
+#  Vertrauliche Nachrichten per SMTP
+### Wenn Sie SMTP-Server ohne Authentifizierung ins Internet stellen, riskieren Sie, dass Ihre Domain auf die Spamlist kommt.
+
+### Sofern Sie Ihre Mails nicht explizit vor dem Versenden verschlüsseln, liegen sie auf dem Server des Providers im Klartext vor.
+### Verschlüsselte Mails werden per MIME übertragen
+---
+# DNS
+### Der DNS Server muss dem Client Form einer IP-Adresse bekannt gegeben werden, weil Clients nur über IP-Adresse mit anderen kommunizieren können.
+
+## Kanonischer Name:
+### Ein kanonischer Name  bezeichnet den eindeutigen, primären Namen der zu einer IP-Adresse gehört. Dieser wird vom DNS zurückgegeben, wenn die IP-Adresse zum Namen aufgelöst wird.
 
 
 
