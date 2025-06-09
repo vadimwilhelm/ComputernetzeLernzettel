@@ -220,8 +220,129 @@
 
 ### Eine Anmeldung mit Benutzer und Passwort ist bei DNS nicht möglich.
 ---
+# Zertifikate
+### Zertifikate basieren auf asymmetrische Schlüssel, diese enthalten den öffentlichen Schlüssel des Dienstanbieters, die offen angeboten werden. Das Zertifikat enthält die URL des Dienstanbieters wie Domain-Namen. 
+- Der Server erstellt ein Zertifikat und leitet es der CA weiter. 
+- Die CA signiert den öffentlichen Schlüssel des Server mit ihrem privaten Schlüssel. Der öffentliche Schlüssel der Ca ist für bei dem Browser aufgelistet.
+- Ruft der Browser den Server auf, schickt der Server sein Zertifikat mit dem öffentlichen Schlüssel, der URL und der Signatur der CA.
+- Der Browser prüft die digitale Signatur im Zertifikat mithilfe des öffentlichen Schlüssels der CA
+
+---
+# Transportschicht-Ports-TCP-UDP
+
+### Die Transportschicht ermöglicht die Kommunikation zwischen Prozessen auf verschiedenen Geräten. Sie wird von der Anwendungsschicht beauftragt, Daten zu übertragen. Um Prozesse auf einem Computer eindeutig identifizieren zu können, verwendet die Transportschicht sogenannte Ports. Diese Ports dienen als Adressen für Absender und Empfänger und werden in die Transportpakete eingefügt. Server verwenden dabei häufig sogenannte "well-known Ports", damit sich Client-Prozesse gezielt mit den entsprechenden Diensten verbinden können.
+
+## Socket
+### Ein Socket ist eine Datenstruktur, die vom Programm zum Senden und Empfangen benötigt wird. Ein Socket besteht aus diesen vier Dingen:
+
+1. **IP-Adresse des Rechners**
+    
+2. **Port-Nummer** (z. B. 80 für Webserver)
+    
+3. **Protokoll** (meist TCP oder UDP)
+    
+4. **Zustand** (z. B. verbunden, geschlossen usw.)
+
+## TCP
+### Dateien werden in Pakete gepackt und können beim übertragen vom Client zum Server oder umgekehrt verloren gehen, zerstört werden oder aufgrund von Umwegen in der falschen Reihenfolge eintreffen. 
+### Damit sich der Programmieren nicht ständig darum kümmern muss die Pakete zu reparieren, verwendet man in der Transportschicht TCP. Das führt alle Reparaturen automatisch, dadurch kommt bei größeren Paketen zu Verzögerungen, was Zeit kostet. Damit es nicht zu einer Überlastung kommt, hat das Paket ein Feld was die Größe des Paketes dem Sender mitteilt.
+
+### Bei TCP sagt die Sequenznummer wo der Datenblock beginnt, sie ist wichtig für die Reihenfolge.
+
+### Der Handshake ist wichtig für eine zuverlässige und geordnete Verbindung.
+
+## UDP
+### TCP ist zuverlässig aber sehr langsam und in manchen fällen ist Geschwindigkeit wichtiger als Zuverlässigkeit. Zum Beispiel beim Streamen oder bei sehrt kleinen Verbindungsdaten, bei denen es sinnvoller ist das verlorene Paket nochmal anzufragen, statt es zu reparieren.
+### Die Vorteile sind:
+
+- Keine Verzögerung durch Verbindungsaufbau
+- Kein Verbindungsstatus bei Sender oder Empfänger notwendig
+- Kleiner Header
+- Keine Überlastkontrolle
+
+---
+# IP
+## Private IP
+### Ein Host (z. B. ein Computer oder Drucker) befindet sich immer in einem bestimmten lokalen Netzwerk (LAN). Innerhalb dieses LANs wird ein anderer Host direkt über seine Hardware-Adresse, also die MAC-Adresse, angesprochen. Handelt es sich jedoch nicht um das gleiche LAN, wird ein Router benötigt, der Daten in das fremde Netzwerk weiterleitet.
+
+Dabei hilft die **IP-Adresse**, die in zwei Teile gegliedert ist:
+
+- Der erste Teil bezeichnet das **Netzwerk** (Netzwerkanteil),
+- der zweite Teil identifiziert den Host innerhalb dieses Netzwerks
+### Private IP-Adressen lassen sich in Subnetze unterteilen, z. B. 192.168.1.0/24 in kleinere Bereiche.
+--- 
+## ## IPv4 einfach erklärt
+
+### 🧱 Aufbau einer IPv4-Adresse
+
+Eine **IPv4-Adresse** besteht aus **4 Zahlen** (je 1 Byte = 8 Bit), zum Beispiel:  
+`192.168.109.34`
+
+Diese Darstellung nennt man **"dotted decimal"**, weil die Zahlen durch Punkte getrennt sind.
+
+---
+
+### 🔍 Was bedeuten die Zahlen in der IP-Adresse?
+
+Jede IPv4-Adresse besteht aus zwei Teilen:
+
+- **Netzwerkteil**: Sagt, zu welchem Netzwerk die Adresse gehört.
+    
+- **Hostteil**: Sagt, welches Gerät im Netzwerk gemeint ist.
+    
+
+Wie viele Bit für das Netzwerk bzw. den Host verwendet werden, zeigt man durch eine **Subnetzmaske** oder die **CIDR-Notation**.
+
+### 📏 CIDR-Notation (z. B. `/24`)
+
+Die **CIDR-Notation** schreibt man mit einem Schrägstrich hinter der IP-Adresse:  
+Beispiel: `192.168.109.34/24`
+
+Das bedeutet:
+
+- **Die ersten 24 Bit** gehören zum **Netzwerk**
+    
+- **Die letzten 8 Bit** gehören zum **Host**
+    
+
+In diesem Fall:
+
+- Netzwerk: `192.168.109`
+    
+- Host: `34` → das einzelne Gerät im Netzwerk
+    
+### Subnetzmaske
+
+Statt `/24` kann man auch eine sogenannte **Subnetzmaske** angeben.  
+Diese besteht ebenfalls aus 4 Zahlen, z. B.: `255.255.255.0`
+
+In binärer Form bedeutet das:
+
+- Die Einsen stehen für den **Netzwerkteil**
+    
+- Die Nullen stehen für den **Hostteil**
+    
+
+Beispiel:
+
+- `/24` = `255.255.255.0` = **24 Einsen und 8 Nullen**
+    
+
+### Die Subnetzmaske bestimmt also, wie eine IP-Adresse aufgeteilt wird – in Netzwerkadresse und Hostadresse.
+
+---
+# IPv6
+### Die Darstellung einer IPv6-Adresse ist hexadezimal. Die Ziffern sind jeweils vierstellig (16 Bit) geordnet, getrennt durch einen Doppelpunkt.
+
+### Früher wurde oft die MAC-Adresse eines Geräts in die IPv6-Adresse eingebaut, mithilfe der sogenannten EUI-64-Methode.
+
+### Mac-Adresse: 00:1A:2B:3C:4D:5E
+### IPv6: fe80::021a:2bff:fe3c:4d5e
 
 
+### IPv6 kann durch ein IPv4-Netz transportiert werden, wenn IPv6 nicht direkt unterstützt wird.
+###  Dabei wird das IPv6-Paket in ein IPv4-Paket eingekapselt und über das IPv4-Netz verschickt.
+---
 
-
+# Routing
 
