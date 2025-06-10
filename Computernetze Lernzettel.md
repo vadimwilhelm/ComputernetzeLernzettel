@@ -97,7 +97,6 @@
 ---
 
 ## **FTP**
-## FTP Protokoll:
 ### FTP ist ein Protokoll, was für die Datenübertragung  über ein Netzwerk von einem Computer zum anderen verwendet wird.
 
 ### FTP ist sitzungsgebunden, zwischen Client und Server wird eine dauerhafte Verbindung aufgebaut. Innerhalb  einer Sitzung können mehrere Befehle ausgeführt werden ohne dass jedes Mal eine neue Verbindung hergestellt werden muss.
