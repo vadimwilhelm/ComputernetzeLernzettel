@@ -7,8 +7,8 @@
 
 | **Ebene** | **Schicht**        | **Protokolle**                 |
 | --------- | ------------------ | ------------------------------ |
-| 1         | Netzzugangsschicht | Ethernet, WLAN, ATM, FDDI, ... |
-| 2         | Internetschicht    | IPv4 bzw. IPv6, ICMP, IPsec    |
+| 1         | Netzwerkschicht| Ethernet, WLAN, ATM, FDDI, ... |
+| 2         | Sicherungsschicht    | IPv4 bzw. IPv6, ICMP, IPsec    |
 | 3         | Transportschicht   | TCP, UDP                       |
 | 4         | Anwendungsschicht  | HTTP, SMTP, DNS                |
 
